@@ -1,0 +1,107 @@
+/*
+TILES IN PIXI : http://www.emanueleferonato.com/2014/02/26/complete-html5-concentration-game-made-with-pixi-js/
+TEXTURE PACKER: http://www.codeandweb.com/texturepacker/features
+
+hosted pixi.js: https://cdnjs.cloudflare.com/ajax/libs/pixi.js/1.5.1/pixi.dev.js
+
+PIXI.JS DOCS: http://www.goodboydigital.com/pixijs/docs/
+
+tween.js cdn: https://cdnjs.cloudflare.com/ajax/libs/tweenjs/0.5.1/tweenjs.min.js
+
+tiles
+    red
+    yellow
+    green
+    blue
+    
+    purple (exp)
+    
+    gold (money)
+    
+    skull
+    red skull
+    
+    wildcard
+    
+1. change array based to hash based board
+2. use prototypes for every fucking thing
+3. change graphics
+
+
+items:
+    Conditions:
+        beginning of game
+        End of game
+        win game
+        lose game
+        beginning of turn
+        End of turn
+        max gem reached
+        max gems total (ex: +1 damage for every max gem pool)
+        spell cast by you
+        spell cast against you
+        X of a kind match
+        damage by you
+        damage to you any or by amount
+        hp full
+        hp half
+        hp < 10%
+        enemy hp full
+        enemy hp half
+        enemy hp < 10%
+        mastery (ex: +1 damage for every 5 green mastery)
+        # of gems on board (ex: +1 damage for every 3 exp on board)
+        # of levels
+        # of enemy levels
+        while under a spell (ex: poisoned)
+        while enemy under a spell (ex: poisoned)
+        
+    function:(by # or % for value & % chance)
++gems
++max gems
++all gems
+-enemy gem
+-enemy gem leech same or other
+
+random position gem
+random substitution of gem (ex: 1 random yellow for 1 blue)
+destroy all gem of type
+destroy row
+destroy col
+
++exp
+-enemy exp 
+
++spell level
++random spell level
+random spell cost reduction
+
++hp
++max hp
+-enemy hp
+-enemy max hp
+
+damage reduced
+reflection of damage
+damage applied to gem pool
+protect against damage by % of time if you receive x damage (75% chance to block 3 damage when you receive 5 or more)
+
++damage
+-enemy damage
+
++resistance
+-enemy resistance
+
++mastery
+-enemy mastery
+
+% chance to cast spell
+% chance to remove statis effect (ex: removes poison)
+
+% chance enemy will lose turn
+
+% chance extra turn
+
+
+
+*/
