@@ -1,0 +1,39 @@
+{
+"frames": [
+	{
+		"filename": "blink",
+		"frame": {"x":147, "y":267, "w":145, "h":265},
+		"spriteSourceSize": {"x":0,"y":0,"w":145,"h":265},
+		"sourceSize": {"w":145,"h":265}
+	},
+	{
+		"filename": "hi",
+		"frame": {"x":294, "y":0, "w":145, "h":265},
+		"spriteSourceSize": {"x":0,"y":0,"w":145,"h":265},
+		"sourceSize": {"w":145,"h":265}
+	},
+	{
+		"filename": "show",
+		"frame": {"x":0, "y":267, "w":145, "h":265},
+		"spriteSourceSize": {"x":0,"y":0,"w":145,"h":265},
+		"sourceSize": {"w":145,"h":265}
+	},
+	{
+		"filename": "stand",
+		"frame": {"x":0, "y":0, "w":145, "h":265},
+		"spriteSourceSize": {"x":0,"y":0,"w":145,"h":265},
+		"sourceSize": {"w":145,"h":265}
+	},
+	{
+		"filename": "tongue",
+		"frame": {"x":147, "y":0, "w":145, "h":265},
+		"spriteSourceSize": {"x":0,"y":0,"w":145,"h":265},
+		"sourceSize": {"w":145,"h":265}
+	}
+],
+"meta": {
+	"image": "joseph.png",
+	"size": {"w": 441, "h": 534},
+	"scale": "1"
+}
+}

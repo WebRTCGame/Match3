@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bombevo</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+			background-image:url('asset/bg.png');
+        }
+    </style>
+
+	<script src="js/matchutil.js"></script>
+	<script src="js/tileutil.js"></script>
+	<script src="js/phaser.min.js"></script>
+	<script src="js/boot.js"></script>
+	<script src="js/preloader.js"></script>
+	<script src="js/title.js"></script>
+	<script src="js/tutorial.js"></script>
+	<script src="js/ending.js"></script>
+	<script src="js/games.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+(function () {
+	//	No parameters given, which means no default state is created or started
+    var game = new Phaser.Game(480, 800, Phaser.AUTO);
+
+	game.state.add('boot', Bombevo.Boot, true);
+	game.state.add('preloader', Bombevo.Preloader);
+	game.state.add('title', Bombevo.Title);
+	game.state.add('tutorial', Bombevo.Tutorial);
+	game.state.add('games', Bombevo.Games);
+	game.state.add('ending', Bombevo.Ending);
+})();
+
+</script>
+</body>

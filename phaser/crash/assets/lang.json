@@ -1,0 +1,15 @@
+{
+    "NEW_GAME": "New Game",
+    "HOW_TO_PLAY": "How to Play",
+    "NEXT": "Next",
+    "CLOSE": "Close",
+    "SCORE": "Score: {0}",
+    "LEVEL": "Level: {0}",
+    "CURRENT_SCORE": "Your current score: {0}",
+    "CURRENT_LEVEL": "Your current level: {0}",
+    "FINAL_SCORE": "Your final score: {0}",
+    "FINAL_LEVEL": "Your final level: {0}",
+    "LOADING": "Loading...",
+    "RESUME": "Resume Game",
+    "BACK_TO_MENU": "Back to menu"
+}
