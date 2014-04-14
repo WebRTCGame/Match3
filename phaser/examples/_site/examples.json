@@ -79,6 +79,10 @@
       "title": "bounding box"
     },
     {
+      "file": "direct+body+movement.js",
+      "title": "direct body movement"
+    },
+    {
       "file": "gravity+and+drag.js",
       "title": "gravity and drag"
     },
@@ -168,6 +172,10 @@
     }
   ],
   "audio": [
+    {
+      "file": "audio+sprite.js",
+      "title": "audio sprite"
+    },
     {
       "file": "loop.js",
       "title": "loop"
@@ -363,6 +371,10 @@
       "title": "breakout"
     },
     {
+      "file": "gemmatch.js",
+      "title": "gemmatch"
+    },
+    {
       "file": "invaders.js",
       "title": "invaders"
     },
@@ -384,6 +396,10 @@
     }
   ],
   "geometry": [
+    {
+      "file": "centroid.js",
+      "title": "centroid"
+    },
     {
       "file": "circle.js",
       "title": "circle"
@@ -489,6 +505,10 @@
     {
       "file": "remove.js",
       "title": "remove"
+    },
+    {
+      "file": "removeBetween.js",
+      "title": "removeBetween"
     },
     {
       "file": "replace.js",
@@ -597,6 +617,10 @@
       "title": "pixel perfect click detection"
     },
     {
+      "file": "pixelpick+-+atlas+scaled.js",
+      "title": "pixelpick - atlas scaled"
+    },
+    {
       "file": "pixelpick+-+atlas.js",
       "title": "pixelpick - atlas"
     },
@@ -625,6 +649,10 @@
     {
       "file": "load+bitmap+font.js",
       "title": "load bitmap font"
+    },
+    {
+      "file": "load+events.js",
+      "title": "load events"
     },
     {
       "file": "load+image.js",
@@ -787,6 +815,10 @@
   ],
   "particles": [
     {
+      "file": "auto+scale.js",
+      "title": "auto scale"
+    },
+    {
       "file": "click+burst.js",
       "title": "click burst"
     },
@@ -799,8 +831,24 @@
       "title": "diamond burst"
     },
     {
+      "file": "emitter+width.js",
+      "title": "emitter width"
+    },
+    {
+      "file": "glass.js",
+      "title": "glass"
+    },
+    {
       "file": "no+rotation.js",
       "title": "no rotation"
+    },
+    {
+      "file": "particle+alpha.js",
+      "title": "particle alpha"
+    },
+    {
+      "file": "particle+scale.js",
+      "title": "particle scale"
     },
     {
       "file": "rain.js",
@@ -811,8 +859,16 @@
       "title": "random sprite"
     },
     {
+      "file": "smoke+trail.js",
+      "title": "smoke trail"
+    },
+    {
       "file": "snow.js",
       "title": "snow"
+    },
+    {
+      "file": "tweened+emitter.js",
+      "title": "tweened emitter"
     },
     {
       "file": "when+particles+collide.js",
@@ -863,6 +919,14 @@
     {
       "file": "out+of+bounds.js",
       "title": "out of bounds"
+    },
+    {
+      "file": "overlap+tween+without+physics.js",
+      "title": "overlap tween without physics"
+    },
+    {
+      "file": "overlap+without+physics.js",
+      "title": "overlap without physics"
     },
     {
       "file": "scale+a+sprite.js",

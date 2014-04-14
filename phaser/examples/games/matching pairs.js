@@ -4,11 +4,9 @@
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-console.log("load phaser_tiles.json");
+
     game.load.tilemap('matching', 'assets/tilemaps/maps/phaser_tiles.json', null, Phaser.Tilemap.TILED_JSON);
-console.log("load phaser_tiles.png");
-    game.load.tileset('tiles', 'assets/tilemaps/tiles/phaser_tiles.png', 100, 100, -1, 1, 1);    
-    console.log("done load phaser_tiles");
+    game.load.image('tiles', 'assets/tilemaps/tiles/phaser_tiles.png');//, 100, 100, -1, 1, 1);    
 }
 
 var timeCheck = 0;
@@ -38,14 +36,18 @@ var tileBack = 25;
 var timesUp = '+';
 var youWin = '+';
 
+var myCountdownSeconds;
+
 
 function create() {
 
         map = game.add.tilemap('matching');
 
-        tileset = game.add.tileset('tiles');
+        map.addTilesetImage('Desert', 'tiles');
+
+        //tileset = game.add.tileset('tiles');
     
-        layer = game.add.tilemapLayer(0, 0, 600, 600, tileset, map, 0);
+        layer = map.createLayer('Ground');//.tilemapLayer(0, 0, 600, 600, tileset, map, 0);
 
         //layer.resizeWorld();
 
@@ -69,8 +71,8 @@ function update() {
 
     if (flipFlag == true) 
     {
-        if (game.time.now - timeCheck >1000)
-        {   
+        if (game.time.totalElapsedSeconds() - timeCheck > 0.5)
+        {
             flipBack();
         }
     }
@@ -85,8 +87,7 @@ function countDownTimer() {
   
     var timeLimit = 120;
   
-    myTime = game.time.now;
-    mySeconds = parseInt(myTime/1000);
+    mySeconds = game.time.totalElapsedSeconds();
     myCountdownSeconds = timeLimit - mySeconds;
     
     if (myCountdownSeconds <= 0) 
@@ -104,7 +105,7 @@ function processClick() {
     if (game.input.mousePointer.isDown)
         {
         // check to make sure the tile is not already flipped
-        if (currentTile == tileBack) 
+        if (currentTile.index == tileBack)
         {
             // get the corresponding item out of squareList
                 currentNum = squareList[currentTilePosition-1];
@@ -132,7 +133,7 @@ function processClick() {
                     savedSquareX2 = layer.getTileX(marker.x);
                     savedSquareY2 = layer.getTileY(marker.y);
                         flipFlag = true;
-                        timeCheck = game.time.now;
+                        timeCheck = game.time.totalElapsedSeconds();
                 }   
             }   
             else
@@ -176,14 +177,13 @@ function randomizeTiles() {
     // randomize squareList
     for (i = 1; i <=36; i++)
     {
-        randomPosition = game.rnd.integerInRange(0,startList.length);
-    
-        thisNumber = startList[ randomPosition ]; 
-    
+        var randomPosition = game.rnd.integerInRange(0,startList.length - 1);
+
+        var thisNumber = startList[ randomPosition ];
+
         squareList.push(thisNumber);
-    
-        a = startList.indexOf(thisNumber);
-    
+        var a = startList.indexOf(thisNumber);
+
         startList.splice( a, 1);
     }
     
@@ -211,14 +211,15 @@ function render() {
     game.debug.text(youWin, 620, 240, 'rgb(0,255,0)');
 
     game.debug.text('Time: ' + myCountdownSeconds, 620, 15, 'rgb(0,255,0)');
-    
+
     //game.debug.text('squareCounter: ' + squareCounter, 620, 272, 'rgb(0,0,255)');
     game.debug.text('Matched Pairs: ' + masterCounter, 620, 304, 'rgb(0,0,255)');
-    
+
     //game.debug.text('startList: ' + myString1, 620, 208, 'rgb(255,0,0)');
     //game.debug.text('squareList: ' + myString2, 620, 240, 'rgb(255,0,0)');
 
-    game.debug.text('Tile: ' + map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y)), 620, 48, 'rgb(255,0,0)');
+
+    game.debug.text('Tile: ' + map.getTile(layer.getTileX(marker.x), layer.getTileY(marker.y)).index, 620, 48, 'rgb(255,0,0)');
 
     game.debug.text('LayerX: ' + layer.getTileX(marker.x), 620, 80, 'rgb(255,0,0)');
     game.debug.text('LayerY: ' + layer.getTileY(marker.y), 620, 112, 'rgb(255,0,0)');
