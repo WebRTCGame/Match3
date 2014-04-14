@@ -4,9 +4,11 @@
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
+console.log("load phaser_tiles.json");
     game.load.tilemap('matching', 'assets/tilemaps/maps/phaser_tiles.json', null, Phaser.Tilemap.TILED_JSON);
+console.log("load phaser_tiles.png");
     game.load.tileset('tiles', 'assets/tilemaps/tiles/phaser_tiles.png', 100, 100, -1, 1, 1);    
+    console.log("done load phaser_tiles");
 }
 
 var timeCheck = 0;

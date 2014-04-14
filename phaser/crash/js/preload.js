@@ -4,6 +4,7 @@
 
     Preload.prototype = {
         preload: function () {
+            console.log("preload.js");
             this.bg = this.add.sprite(160, 240, 'background');
             this.bg.anchor.x = 0.5;
             this.bg.anchor.y = 0.5;

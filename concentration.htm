@@ -13,7 +13,7 @@
 		
 		 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/1.5.1/pixi.dev.js"></script>
         <script src="tweenjs.js"></script>
-
+<script src="js/phaser.min.js"></script>
         <script src="js/tile.js"></script>
 	</head>
 	<body>
@@ -27,7 +27,7 @@
 			// create an new instance of a pixi stage with a grey background
 			var stage = new PIXI.Stage(0x888888);
 			// create a renderer instance width=640 height=480
-			var renderer = PIXI.autoDetectRenderer(640,480);
+			var renderer = PIXI.autoDetectRenderer(640,640);
      		// add the renderer view element to the DOM
 			document.body.appendChild(renderer.view);
 			// importing a texture atlas created with texturepacker

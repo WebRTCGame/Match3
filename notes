@@ -27,8 +27,49 @@ tiles
 2. use prototypes for every fucking thing
 3. change graphics
 
+Spells:
+    level
+        example:
+            lvl 1: destory tile, you receive nothing, turn ends
+            lvl 2: destory tile, you receive tile, turn ends
+            lvl 3: destory tile, you receive tile, turn does not end
+            lvl 4: same as lvl 3 plus double bonus
+            lvl 5: same as lvl 4 plus adjacent tile(s) destroyed as well
+            -----
+            lvl 1: - enemy hp (low), turn ends
+            lvl 2: - enemy hp (med), turn ends
+            lvl 3: - enemy hp (med), turn does not end
+            lvl 4: - enemy hp (med), + hp self (low), turn does not end
+            lvl 5: - enemy hp (med), + hp self (med), turn does not end
+    action
+    common:
+        lvl 3: turn does not end
+        
+
 
 items:
+    socketed or not
+    sockets 0 to 4
+    
+    types:
+        helm
+        weapon
+        armor
+        accessory
+        
+    req'd lvl to wear
+    
+   SEE items.html for table
+   
+   Three states for items:
+        equipped
+            start game with this item
+        secondary equpped
+            can switch to this item during game at cost of one turn
+        inventory
+            can equip/sequip from this pool
+    
+socketable gems / spells:
     Conditions:
         beginning of game
         End of game
@@ -101,7 +142,5 @@ protect against damage by % of time if you receive x damage (75% chance to block
 % chance enemy will lose turn
 
 % chance extra turn
-
-
 
 */

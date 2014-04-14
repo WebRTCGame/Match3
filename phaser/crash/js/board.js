@@ -13,6 +13,7 @@
     }
 
     Board.prototype.init = function () {
+        console.log("board.init");
         var i, group, count;
 
         for (i = 1; i < blocks.m + 1; i++) {

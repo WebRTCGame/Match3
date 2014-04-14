@@ -1,7 +1,7 @@
 (function (blocks) {
 
-    var width = navigator.isCocoonJS ? window.innerWidth : 320,
-        height = navigator.isCocoonJS ? window.innerHeight : 480;
+    var width = 320,
+        height =  480;
 
 
     // number of columns
@@ -33,15 +33,15 @@
         x: 32,
         y: 72
     };
-
-    blocks.game = new Phaser.Game(width, height, navigator.isCocoonJS ? Phaser.WEBGL : Phaser.AUTO);
-
+    
+    blocks.game = new Phaser.Game(width, height, Phaser.WEBGL );
+    console.log("new game");
     blocks.game.state.add('Boot', blocks.Boot);
     blocks.game.state.add('Preload', blocks.Preload);
     blocks.game.state.add('Menu', blocks.Menu);
     blocks.game.state.add('Help', blocks.Help);
     blocks.game.state.add('Gameplay', blocks.Gameplay);
-
+    console.log("booting...");
     blocks.game.state.start('Boot');
-
+    
 }(window.blocks = window.blocks || {}));

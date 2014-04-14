@@ -26,7 +26,7 @@
             this.game.state.start('Help');
         }
     };
-
+console.log("menu.js");
     blocks.Menu = Menu;
 
 }(window.blocks = window.blocks || {}));
