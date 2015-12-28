@@ -1,4 +1,5 @@
 /*
+1440x810 16:9 ratio
 TILES IN PIXI : http://www.emanueleferonato.com/2014/02/26/complete-html5-concentration-game-made-with-pixi-js/
 TEXTURE PACKER: http://www.codeandweb.com/texturepacker/features
 
@@ -7,6 +8,87 @@ hosted pixi.js: https://cdnjs.cloudflare.com/ajax/libs/pixi.js/1.5.1/pixi.dev.js
 PIXI.JS DOCS: http://www.goodboydigital.com/pixijs/docs/
 
 tween.js cdn: https://cdnjs.cloudflare.com/ajax/libs/tweenjs/0.5.1/tweenjs.min.js
+
+Ideas:
+    materia unlocking, if materia is green based, maybe it takes the collection of 100 green, in game, to enable the materia
+    
+    spells:
+        freeze gem on board (x turns) gem can not be destroyed for x turns
+        set fire to gem on board if gem is destoyed, it hurts player who destoryed it
+        shuffle row/col
+        gem is bomb (after x turns, it destroyes 3x3 grid)
+        hide gem, won't know what it is until a match
+        
+
+functions:
+    life based on level
+        base: 50
+        tweak: 2.25
+        lvl 0: 50
+        lvl 99: 499
+        function: round(tweak * (level ^ 2) / 50 + base)
+    elemental max based on mastery
+        function: mastery / 2
+        
+PLAYER:
+    EXPERIENCE
+    LEVEL (CALCULATED FROM EXPERIENCE)
+    GOLD CURRENT (LESS THAN GOLD MAX)
+    GOLD MAX (BASED ON LEVEL)
+    NAME
+    VICTORIES
+    LOSSES
+    CHARACTERS
+    INVENTORY
+        EQUIPMENT
+        MATERIA
+        
+cHARACTER:
+    ATTRIBUES:
+            RED MASTERY
+            GREEN MASTERY
+            YELLOW MASTERY
+            BLUE MASTERY
+            BATTLE
+            CUNNING
+            MORALE
+            EXPERIENCE
+            VICTORIES
+            LOSSES
+            EQUIPED EQUIPMENT
+            
+============================
+    Skill     |  Gem Type
+============================
+Earth Mastery | Green Gems
+Fire Mastery  | Red Gems
+Air Mastery   | Yellow Gems
+Water Mastery | Blue Gems
+Battle        | Skull
+Cunning       | Gold
+Morale        | Purple Stars
+
+ALL:
+    x% chance of an extra turn when matching.
+    x% chance of a wildcard when matching.
+
+
+(MANA) ELEMENTAL MASTERY: 
+    x bonus to maximum mana.
+    x bonus to starting mana.
+
+(SKULL / RED SKULL) BATTLE (OFFENSE):
+    x% bonus to inflicted damage (from all sources).
+
+(GOLD / WILDCARD) CUNNING (CLEVER):
+    x% bonus to wildcard effects.
+    x% bonus to experience/gold earned from defeated foes.
+    HIGHER CUNNING GOES FIRST
+    
+(PURPLE EXP) MORALE (RESOLVE):
+    x bonus to life points.
+    x% bonus to all spell resistance.
+
 
 tiles
     red
@@ -57,7 +139,7 @@ items:
         armor
         accessory
         
-    req'd lvl to wear
+    req'd lvl to wear || WEIGHT
     
    SEE items.html for table
    
@@ -70,26 +152,45 @@ items:
             can equip/sequip from this pool
     
 socketable gems / spells:
-    Conditions:
+** FINAL FANTASY STYLE
+
+TYPE: 
+    CASTABLE (HAS MANA COST)
+    AUTOMATIC (HAS MANA COST)
+    
+LINKING EX:
+    BEGINNING OF TURN (AUTOMATIC)(MANA COST 5 RED) --> DESTROY ONE RANDOM GEM (LVL 1)(MANA COST 4 BLUE + 3 RED) --> TOTAL COST (8 RED, 4 BLUE) TO FUNCTION
+    DIFFERENT EVENT TYPES HAVE MANA REQUIREMENT MULTIPLIERS
+        THE MULTIPLIERS WILL VARY DEPENDING ON SPELL FUNCTION (# VS % CHANCE VS X TURNS VS ETC)
+            SO THAT JUST CASTING A SPELL IS * 1
+            BEGINNING OF GAME IS FREE, END OF GAME IS FREE, WIN OR LOSE
+            SPELL CAST IS * 2
+            MATCH 4 OF A KIND IS * 1.25
+            MATCH 5 OF A KIND IS * 0.5
+            MATCH 6, 7, 8 IS FREE
+            EVERY TURN IS * 4
+            RECEIVE DAMAGE IS * 2
+            GAIN MANA IS * 5
+        
+    EVENTS:
         beginning of game
         End of game
         win game
         lose game
         beginning of turn
         End of turn
-        max gem reached
-        max gems total (ex: +1 damage for every max gem pool)
+        max MANA reached
+        max MANA total (ex: +1 damage for every max gem pool)
         spell cast by you
         spell cast against you
-        X of a kind match
-        damage by you
+        4/5/6/7/8 of a kind match
         damage to you any or by amount
-        hp full
-        hp half
-        hp < 10%
-        enemy hp full
-        enemy hp half
-        enemy hp < 10%
+        hp %
+        enemy hp %
+        GAIN MANA
+        
+    Conditions:
+       
         mastery (ex: +1 damage for every 5 green mastery)
         # of gems on board (ex: +1 damage for every 3 exp on board)
         # of levels
@@ -97,50 +198,90 @@ socketable gems / spells:
         while under a spell (ex: poisoned)
         while enemy under a spell (ex: poisoned)
         
-    function:(by # or % for value & % chance)
-+gems
-+max gems
-+all gems
--enemy gem
--enemy gem leech same or other
-
-random position gem
-random substitution of gem (ex: 1 random yellow for 1 blue)
-destroy all gem of type
-destroy row
-destroy col
-
-+exp
--enemy exp 
-
-+spell level
-+random spell level
-random spell cost reduction
-
-+hp
-+max hp
--enemy hp
--enemy max hp
-
-damage reduced
-reflection of damage
-damage applied to gem pool
-protect against damage by % of time if you receive x damage (75% chance to block 3 damage when you receive 5 or more)
-
-+damage
--enemy damage
-
-+resistance
--enemy resistance
-
-+mastery
--enemy mastery
-
-% chance to cast spell
-% chance to remove statis effect (ex: removes poison)
-
-% chance enemy will lose turn
-
-% chance extra turn
-
+        
+//MAYBE    SPELL MODIFIERS:
+        AMOUNT
+            % CHANCE ON NEXT TURN
+            X TURNS
+            
+SPELL TYPE:
+    function:(by # or % for value & % chance & FOR X TURNS)
+        +MANA SINGLE (ENRICH)
+        +MANA MAX SINGLE (AUGMENT)
+        +MANA ALL (PROMOTE)
+        +MANA MAX ALL (BOLSTER)
+        
+        -MANA SINGLE (DISGRACE)
+        -MANA MAX SINGLE (discourage)
+        -MANA ALL (HINDER)
+        -MANA MAX ALL (obstruct)
+        
+        
+        -MANA leech same or other (leech)
+        
+        
+        Select or random / gain effects or not:
+            GEMS TRADE PLACES
+            substitution of gem (ex: 1 random yellow for 1 blue)
+            SUBSTITUE ALL (ALL BLUE BECOME RED, all skulls become +5 skulls)
+            destroy all gem of type
+            destroy row
+            destroy col
+            DESTROY AROUND
+            DESTROY SINGLE
+            destroy random gems (by number)
+        
+        +exp (ACUMEN)
+        -enemy exp (INEPT)
+        
+        +GOLD (PROFIT)
+        -ENEMY GOLD (STEAL)
+        
+        +spell level (ENRICH)
+        +random spell level (REFINE)
+        random spell cost reduction (RESEARCH)
+        +ENEMY MANA COSTS (GRAVITY)
+        -YOUR MANA COSTS (LIGHTEN)
+        
+        +hp (RESTORE)
+        +max hp (BOOST)
+        -enemy hp (POISON OR DIRECT DAMAGE)(POISON / STRIKE)
+        -enemy max hp (WEAKEN)
+        
+        damage reduced (HARDEN)
+        reflection of damage (MIRROR)
+        damage applied to MANA pool (WALL)
+        protect against damage by % of time if you receive x damage (75% chance to block 3 damage when you receive 5 or more) (REFLEX)
+        DAMAGE APPLIED TO BOTH (LINK)
+        
+        +damage (ENRAGE)
+        -enemy damage (SHRINK)
+        
+        +resistance (RESIST)
+        -enemy resistance (POROSE)
+        
+        +elemental mastery single (WISDOM)
+        +elemental masteries all (understanding)
+        -enemy elemental mastery (DAZE)
+        -enemy elemental mastery all (instability)
+        
+        cast spell
+        remove statis effect (ex: removes poison) (HEAL)
+        
+        extra turn (RISE)
+        
+        SEAL ATTRIBUE (BIND)
+        
+        -ATTRIBUTE (DRAIN)
+        
+        POISON (-HP FOR X TURNS)
+        SEAL CASTING / SEAL AUTOMATICS (ENEMY CANNOT CAST SPELL FOR X TURNS)
+        GRAVITY (ENEMY MANA COSTS GO UP BY % FOR X TURNS)
+        SEAL MANA BY TYPE OR ALL (X TURNS)
+        SEAL RESISTANCE (X TURNS)
+        SEAL DAMAGE (ENEMY DAMAGE REDUCED FOR X TURNS)
+        DRAIN (-ATTRIBUE FOR X TURNS)
+        LINK (ENEMY DAMAGE APPLIED TO BOTH FOR X TURNS)
+        COUNTER (DAMAGE TO ENEMY WHEN YOU RECEIVE DAMAGE FOR X TURNS)
+        
 */
